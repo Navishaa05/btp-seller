@@ -1,0 +1,61 @@
+My Part: Recommender System
+
+Started by understanding how the recommender-system component will fit into the overall simulation framework and identifying the data requirements for retrieval, ranking, and long-term simulation experiments.
+The main challenge identified early was handling the Amazon Reviews dataset (~1 TB) in a scalable and reproducible way.
+
+What I have done so far
+
+- Studied the structure and scale of the Amazon Reviews dataset.
+
+- Explored two available routes for accessing the data:
+    - Raw dataset from the UCSD website (gzipped JSON files).
+    - Hugging Face Amazon Reviews 2023 dataset.
+
+- Compared both options based on:
+    - Ease of access and schema consistency
+    - Support for streaming and memory-safe processing
+    - Versioning and reproducibility
+    - Suitability for large-scale preprocessing
+
+- Decided to use the Hugging Face dataset as it provides:
+    - Standardized and versioned data
+    - Native streaming support
+    - Built-in local caching to avoid repeated downloads
+    - Easier integration with downstream ML and simulation pipelines
+
+Conceptual understanding developed
+
+- Raw interaction logs are not directly usable for recommender simulations.
+- The dataset needs to be reduced into compact, structured tables that represent:
+    - User–item interactions
+    - Item metadata (catalog)
+    - User-level statistics
+- A traditional in-memory approach is infeasible; a streaming MapReduce-style pipeline is required.
+
+Decisions made
+
+- Use Hugging Face streaming mode (streaming=True) instead of full dataset loading.
+- Configure a shared local Hugging Face cache on a datacentre datastore connected to ADA/Turing.
+- Use a MapReduce-style preprocessing approach:
+    - Map phase: extract interaction events and metadata while streaming.
+    - Reduce phase: aggregate per-user and per-item statistics.
+    - Periodically flush intermediate results to disk to control memory usage.
+- Store reduced datasets in Parquet format for efficient storage and access.
+
+Planned output formats (for simulation)
+- Interactions table: user_id, item_id, timestamp, event_type, value
+- Items table: item_id, title, categories, brand, price, popularity
+- Users table: user_id, interaction_count, category preferences, last active time
+
+Resources researched / planned to use
+- Hugging Face Datasets documentation (streaming and caching)
+- Hugging Face Amazon Reviews 2023 dataset
+- PyArrow / Parquet documentation for columnar storage
+- DuckDB / Spark (as possible reduce-phase tools if required)
+- Elasticsearch documentation (for later indexing of item catalog)
+
+Plan going forward
+- Set up Hugging Face local cache on datacentre storage.
+- Write a minimal streaming preprocessing script.
+- Implement MapReduce-style aggregation for interactions, users, and items.
+- Generate initial Parquet outputs for downstream recommender experiments.

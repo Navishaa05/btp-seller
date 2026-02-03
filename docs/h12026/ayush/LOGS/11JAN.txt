@@ -1,0 +1,56 @@
+My part : Auction Module 
+
+First understood breif idea about whole project and how Auction Module is currently working.
+
+currently they r using some sigmoid functions (simple neural networks) to predict the bid prices for the ads.
+
+Our Task : Replace the current model with more advanced models like XGBoost...
+
+As i have no prior experience in Auction Theory and Reinforcement Learning, so i have made a plan to learn the required concepts step by step.
+
+My plan:
+Phase 0 – Understanding the Basics 
+
+✔ How ad auctions work
+✔ What CTR / CVR mean
+✔ What budget pacing means
+
+Phase 1 – Auction fundamentals 
+
+✔ First-price vs GSP vs VCG
+✔ Quality score concept
+✔ Multi-slot auctions
+
+Phase 2 – ML for prediction 
+
+✔ What features are
+✔ What count-based features are
+✔ Understand XGBoost 
+
+Phase 3 – RL basics
+
+Learn RL basics including:
+✔ State / Action / Reward
+✔ Episode / Policy
+✔ How Gym environments work
+
+Phase 4 - Start Building auctionGym 
+
+================================================================================
+
+Prerequisites & Topics to Learn:
+
+1.Auction Theory: 
+   - Understand the basics of auction theory, including different types of auctions (e.g., first-price, second-price, VCG, Gsp ).
+   - Study how bidders strategize and how auction formats impact bidding behavior.
+   - Read src/auction_sim/auction/mechanisms.py in the codebase for better understanding of auction mechanisms.
+
+   Resources:
+   - https://en.wikipedia.org/wiki/Vickrey_auction
+   - https://web.stanford.edu/~jdlevin/Econ%20285/Vickrey%20Auction.pdf (for VCG auction)
+   - https://arxiv.org/abs/1701.05946 (for GSP auction)
+
+2.Machine Learning for Prediction:
+
+ok so here is where work starts ...
+
