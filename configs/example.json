@@ -3,8 +3,8 @@
     "start_ts": 1704067200,
     "horizon_hours": 24,
     "opportunities": 300000,
-    "batch_size": 100000,
-    "slots": 3,
+    "batch_size": 300000,
+    "slots": 2,
     "slot_multipliers": [
       1.0,
       0.7,
@@ -19,7 +19,7 @@
     "regulation": {
       "min_quality": 0.0,
       "min_bid": 0.0,
-      "reserve_cpc": 0.0
+      "reserve_cpc": 0.1
     },
     "metrics": {
       "roas_mode": "value_over_spend",
@@ -28,34 +28,54 @@
   },
   "sellers": [
     {
-      "id": "A",
-      "brand": "alpha",
-      "daily_budget": 20000.0,
+      "id": "seller_1",
+      "brand": "BrandA",
+      "daily_budget": 200.0,
       "value_per_conversion": 50.0,
-      "cogs_ratio": 0.5,
+      "cogs_ratio": 0.3,
       "base_bid_shading": 0.8,
-      "policy": "rudimentary",
-      "seed": 1
+      "policy": "aggressive",
+      "seed": 42
     },
     {
-      "id": "B",
-      "brand": "beta",
-      "daily_budget": 15000.0,
-      "value_per_conversion": 60.0,
-      "cogs_ratio": 0.4,
+      "id": "seller_2",
+      "brand": "BrandB",
+      "daily_budget": 200.0,
+      "value_per_conversion": 50.0,
+      "cogs_ratio": 0.3,
       "base_bid_shading": 0.8,
-      "policy": "auto",
-      "seed": 2
+      "policy": "roi_driven",
+      "seed": 43
     },
     {
-      "id": "C",
-      "brand": "gamma",
-      "daily_budget": 10000.0,
-      "value_per_conversion": 80.0,
-      "cogs_ratio": 0.6,
+      "id": "seller_3",
+      "brand": "BrandC",
+      "daily_budget": 200.0,
+      "value_per_conversion": 50.0,
+      "cogs_ratio": 0.3,
       "base_bid_shading": 0.8,
-      "policy": "auto",
-      "seed": 3
+      "policy": "conservative",
+      "seed": 44
+    },
+    {
+      "id": "seller_4",
+      "brand": "BrandD",
+      "daily_budget": 200.0,
+      "value_per_conversion": 50.0,
+      "cogs_ratio": 0.3,
+      "base_bid_shading": 0.8,
+      "policy": "risk_averse",
+      "seed": 45
+    },
+    {
+      "id": "seller_5",
+      "brand": "BrandE",
+      "daily_budget": 200.0,
+      "value_per_conversion": 50.0,
+      "cogs_ratio": 0.3,
+      "base_bid_shading": 0.8,
+      "policy": "exploratory",
+      "seed": 46
     }
   ]
 }
